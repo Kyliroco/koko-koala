@@ -2,6 +2,34 @@
 
 {% block title %}Accueil - Koko le Koala{% endblock %}
 
-{% block body %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="./css/default/main.css" rel="stylesheet">
+{% endblock %}
 
+{% block body %}
+    <main>
+        <section id="sec_main_home" class="center_element">
+            <div id="sec_main_title">
+                <h2>Koko le Koala</h2>
+                <h1>Soutien scolaire en primaire</h1>
+            </div>
+            <div id="sec_main_title_pic">
+                <img id="koko_picture" src="{{ asset('./img/background/koko_canva.png') }}"/>
+            </div>
+        </section>
+        <section id="sec_level" class="center_element">
+            <h3 id="sec_level_title">Des exercices de la Grande Section au CM2 !</h3>
+            <div>
+                <ul id="main_level_box_index">
+                    <li class="main_level_box"><a><div><p>GS</p><p>Bientôt disponible</p></div></a></li>
+                    <li class="main_level_box"><a><div><p>CP</p><p>Bientôt disponible</p></div></a></li>
+                    <li class="main_level_box"><a><div><p>CE1</p><p>Bientôt disponible</p></div></a></li>
+                    <li class="main_level_box"><a><div><p>CE2</p><p>Bientôt disponible</p></div></a></li>
+                    <li class="main_level_box"><a><div><p>CM1</p><p>Bientôt disponible</p></div></a></li>
+                    <li class="main_level_box"><a><div><p>CM2</p><p>Bientôt disponible</p></div></a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
 {% endblock %}

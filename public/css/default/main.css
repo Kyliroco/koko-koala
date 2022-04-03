@@ -1,0 +1,50 @@
+.center_element {
+    padding-left: 7vw;
+    padding-right: 7vw;
+}
+#sec_main_home {
+    display: flex;
+    justify-content: space-between;
+}
+#sec_main_title {
+    height: 20rem;
+}
+#koko_picture {
+    width: 18rem;
+}
+#sec_main_title_pic {
+    flex-direction: column-reverse;
+    display: flex;
+}
+#sec_main_title > h2 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 5rem;
+    padding-top: 7rem;
+    background: linear-gradient(to right, #E0B0FF 0%, #7F84DF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: #efefef 0. 1em 0.1em 0.1em;
+}
+#sec_main_title > h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 2rem;
+}
+/** sec_level **/
+#sec_level {
+    background-color: #BADCAC;
+    padding-top: 2rem;
+}
+#main_level_box_index {
+    display: flex;
+    justify-content: space-between;
+}
+.main_level_box {
+    background-color: #8ab67b;
+}
+#sec_level_title {
+    text-align: right;
+    color: white;
+    font-family: "League Spartan";
+    font-weight: 700;
+    font-size: 2rem;
+}
