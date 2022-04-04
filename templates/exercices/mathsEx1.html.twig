@@ -1,12 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'exercices/template.html.twig' %}
 
 {% block title %}Maths Ex 1 !{% endblock %}
 
-{% block body %}
+{% block exo %}
 <script src="{{asset('js/scriptMathsEx1.js')}}"></script>
 
 <div class="example-wrapper">
-    <h1>Maths Ex 1</h1>
 	<h2 style="text-align: center">Appuie sur la case où il y a le plus de Koko.</h2>
     <div style="display: flex; justify-content: space-evenly; height: 256px;">
         <canvas style="border-radius: 15px; border: 1px black solid; background-color: white" id="canvas1" width="256" height="256"></canvas>

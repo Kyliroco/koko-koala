@@ -23,7 +23,7 @@
     background: linear-gradient(to right, #E0B0FF 0%, #7F84DF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: #efefef 0. 1em 0.1em 0.1em;
+    text-shadow: #efefef 0.1em 0.1em 0.1em;
 }
 #sec_main_title > h1 {
     font-family: 'League Spartan', sans-serif;
