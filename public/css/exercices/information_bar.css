@@ -1,0 +1,67 @@
+.alt_information {
+     background-color: #dfeae9;
+     width: max-content;
+     font-family: 'Montserrat', sans-serif;
+     font-size: 0.8rem;
+     color: #5f8a8a;
+     padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+     border-radius: 50rem;
+     margin-right: 1rem;
+}
+.alt_information_content {
+     display: flex;
+}
+#main_header {
+     margin-right: 2.5%;
+     margin-left: 2.5%;
+     margin-top: 2.5%;
+}
+.exercice_title {
+     font-family: 'League Spartan', sans-serif;
+     font-size: 1.8rem;
+}
+progress {
+     background: lightgray;
+     border-radius: 50rem;
+     border: none;
+     width: 100%;
+     height: 0.4rem;
+}
+progress::-webkit-progress-bar {
+     /* style rules */
+}
+progress::-webkit-progress-value,  progress::-moz-progress-bar{
+     background: #7F84DF;
+     border-radius: 50rem;
+}
+.flex {
+     display: flex;
+     justify-content: space-between;
+}
+.count {
+     border: 1px solid #bbb7b7;
+     display: flex;
+     box-shadow: 0 0 4rem rgba(40,0,0,0.20);
+     border-radius: 0.6rem;
+}
+.count > p {
+     font-family: 'League Spartan', sans-serif;
+     font-weight: 300;
+     font-size: 100%;
+     height: 50%;
+     margin-top: 20%;
+     padding-left: 0.4rem;
+     padding-right: 0.4rem;
+}
+.count > img {
+     font-size: 100%;
+     height: 25px;
+     padding-top: 5px;
+     padding-right: 0.3rem;
+}
+#exercice_information {
+     margin-top: 1rem;
+}
+.main_information {
+     width: 90%;
+}

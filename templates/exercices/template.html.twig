@@ -5,13 +5,12 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/exercices/base.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/exercices/information_bar.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
     <div id="app_div">
         <div id="app"> <!--CE BLOCK EST AMMENER A ETRE DANS DU VUE.JS. TOUT LE CONTENU DU DIV-->
-            <h3 class="exercices_title">Titre de l'exercice test</h3>
-
             {% block exo %} <!--ICI, BLOCK EXO EST UNE SOLUTION TEMPORAIRE AFIN DE CAPTER L'EXERCICE DE JOACKIM-->
             {% endblock %}
         </div>

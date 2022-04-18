@@ -22,4 +22,11 @@ class ExercicesController extends AbstractController
         return $this->render('exercices/mathsEx1.html.twig', [
         ]);
     }
+
+    #[Route('/exercices/demo', name: 'demo')]
+    public function demo(): Response
+    {
+        return $this->render('exercices/exo.html.twig', [
+        ]);
+    }
 }

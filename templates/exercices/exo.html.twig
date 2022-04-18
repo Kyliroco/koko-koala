@@ -1,0 +1,30 @@
+{% extends 'exercices/template.html.twig' %}
+
+{% block exo %}
+<!-- PARTIE HAUTE : INFORMATION SUR L'EXERCICE -->
+<div id="main_header">
+    <div>
+        <h1 class="exercice_title">Comparer jusqu'à 5</h1>
+    </div>
+    <div class="flex" id="exercice_information">
+        <div class="main_information">
+            <div class="alt_information_content">
+                <div><p class="alt_information">&#x2022 Mathématiques</p></div>
+                <div><p class="alt_information">&#x2022 Nombre et Calculs</p></div>
+                <div><p class="alt_information">&#x2022 CP</p></div>
+            </div>
+            <div>
+                <progress value="20" max="100"></progress>
+            </div>
+        </div>
+        <div class="count">
+            <p>50</p>
+            <img id="count_icon" src="{{ asset('/img/icons/eucalyptus_leaves.png') }}">
+        </div>
+    </div>
+</div>
+<!-- PARTIE BASSE : EXERCICE -->
+<div>
+
+</div>
+{% endblock %}
