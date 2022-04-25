@@ -3,15 +3,23 @@
 {% block exo %}
 <!-- PARTIE HAUTE : INFORMATION SUR L'EXERCICE -->
 <div id="main_header">
-    <div>
-        <h1 class="exercice_title">Comparer jusqu'à 5</h1>
+    <div class="flex">
+        <h1 class="exercice_title">Remplir une suite (jusqu'à 10)</h1>
+        <div>
+            <a class="button exit">x</a>
+        </div>
     </div>
     <div class="flex" id="exercice_information">
         <div class="main_information">
-            <div class="alt_information_content">
-                <div><p class="alt_information">&#x2022 Mathématiques</p></div>
-                <div><p class="alt_information">&#x2022 Nombre et Calculs</p></div>
-                <div><p class="alt_information">&#x2022 CP</p></div>
+            <div class="information_class_questions">
+                <div class="alt_information_content">
+                    <div><p class="alt_information">&#x2022 Mathématiques</p></div>
+                    <div><p class="alt_information">&#x2022 Nombre et Calculs</p></div>
+                    <div><p class="alt_information">&#x2022 CP</p></div>
+                </div>
+                <div>
+                    <p class="questions">2 / 10</p>
+                </div>
             </div>
             <div>
                 <progress value="20" max="100"></progress>
@@ -24,7 +32,34 @@
     </div>
 </div>
 <!-- PARTIE BASSE : EXERCICE -->
-<div>
+<!-- ICI :  remplir une suite de chiffres / nombres, donc à l'écran sera affichée une suite de 10
+nombres où 4 manqueront et l'élève devra les trouver -->
+<div id="exercice">
+    <div class="blank_3">
 
+    </div>
+    <div>
+        <ul class="horizontal_list">
+            <li><p class="letter_box_1">1</p></li>
+            <li><input class="blank false_1"></li>
+            <li><p class="letter_box_1">3</p></li>
+            <li><p class="letter_box_1">4</p></li>
+            <li><input class="blank"></li>
+            <li><p class="letter_box_1">6</p></li>
+            <li><input class="blank true_1"></li>
+            <li><p class="letter_box_1">8</p></li>
+            <li><p class="letter_box_1">9</p></li>
+            <li><input class="blank"></li>
+        </ul>
+    </div>
+    <div class="blank_6">
+
+    </div>
+    <div id="actions">
+        <div class="action_button">
+            <button class="button_large">Vérifier</button>
+            <button class="button_large">Continuer</button>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -65,3 +65,23 @@ progress::-webkit-progress-value,  progress::-moz-progress-bar{
 .main_information {
      width: 90%;
 }
+.information_class_questions {
+     display: flex;
+     justify-content: space-between;
+}
+.questions {
+     font-family: 'League Spartan', sans-serif;
+}
+.exit {
+     background-color: #B0413E;
+     font-family: 'League Spartan', sans-serif;
+     color: burlywood;
+     text-align: center;
+}
+.button {
+     padding: 0.4rem;
+     display: block;
+     width: 1rem;
+     height: 1rem;
+     border-radius: 100px;
+}
