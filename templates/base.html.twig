@@ -27,11 +27,16 @@
                 </div>
                 <div id="nav_bar_menu_link">
                     <ul>
-                        <li><a>Découvrir</a></li>
-                        <li><a>Contenus</a></li>
-                        <li><a>Qui sommes-nous ?</a></li>
-                        <li><a href="{{ path('app_register')}}">S'inscrire</a></li>
-                        <li><a id="connect" href="{{ path('app_login') }}">Se connecter</a></li>
+                        {% if is_granted('ROLE_USER') %}
+                            <li><a href="{{ path('app_parent')}}">Tableau de bord</a></li>
+                            <li><a href="{{ path('app_logout')}}">Se déconecter</a></li>
+                        {% else %}
+                            <li><a>Découvrir</a></li>
+                            <li><a>Contenus</a></li>
+                            <li><a>Qui sommes-nous ?</a></li>
+                            <li><a href="{{ path('app_register')}}">S'inscrire</a></li>
+                            <li><a id="connect" href="{{ path('app_login') }}">Se connecter</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>

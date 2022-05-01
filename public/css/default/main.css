@@ -37,9 +37,13 @@
 #main_level_box_index {
     display: flex;
     justify-content: space-between;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
 }
 .main_level_box {
     background-color: #8ab67b;
+    border-radius: 1rem;
+    width: 12%;
 }
 #sec_level_title {
     text-align: right;
@@ -47,4 +51,19 @@
     font-family: "League Spartan";
     font-weight: 700;
     font-size: 2rem;
+}
+.main_level_box_class {
+    color: white;
+    font-family: "League Spartan";
+    text-align: center;
+    padding-top: 1rem;
+    font-size: 2rem;
+}
+.main_level_box_text {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
 }
