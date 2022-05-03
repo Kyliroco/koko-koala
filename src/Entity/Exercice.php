@@ -19,7 +19,7 @@ class Exercice
     #[ORM\ManyToOne(targetEntity: Matiere::class, inversedBy: 'exercices')]
     private $matiere;
 
-    #[ORM\ManyToOne(targetEntity: Niveau::class)]
+    #[ORM\ManyToMany(targetEntity: Niveau::class)]
     private $niveau;
 
     #[ORM\Column(type: 'boolean')]
@@ -27,6 +27,12 @@ class Exercice
 
     #[ORM\Column(type: 'string', length: 255)]
     private $lien;
+
+    #[ORM\ManyToOne(targetEntity: Classe::class, inversedBy: 'exercices')]
+    private $classe;
+
+    #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'exercices')]
+    private $categorie;
 
     public function getId(): ?int
     {
@@ -93,11 +99,36 @@ class Exercice
         return $this;
     }
 
-    function __construct($nom, $matiere, $niveau, $visible, $lien) {
+    function __construct($nom, $matiere, $classe, $visible, $lien, $categorie) {
     	$this->nom = $nom;
     	$this->matiere = $matiere;
-    	$this->niveau = $niveau;
+    	$this->classe = $classe;
         $this->visible = $visible;
         $this->lien = $lien;
+        $this->categorie = $categorie;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): self
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
     }
 }

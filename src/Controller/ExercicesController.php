@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ExerciceRepository;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,23 +11,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class ExercicesController extends AbstractController
 {
     #[Route('/exercices', name: 'app_exercices')]
-    public function index(): Response
+    public function enfantDashboard(): Response
     {
-        return $this->render('exercices/index.html.twig', [
-            'controller_name' => 'ExercicesController',
-        ]);
+        return $this->redirectToRoute('app_enfant');
     }
-    #[Route('/exercices/MathsEx1', name: 'MathsEx1')]
-    public function MathsEx1(): Response
+    #[Route('/exercices/{exoId}', name: 'exo')]
+    public function index($exoId, ExerciceRepository $exerciceRepository): Response
     {
-        return $this->render('exercices/mathsEx1.html.twig', [
-        ]);
-    }
-
-    #[Route('/exercices/demo', name: 'demo')]
-    public function demo(): Response
-    {
-        return $this->render('exercices/exo.html.twig', [
-        ]);
+        $exercice = $exerciceRepository->find($exoId);
+        if($exercice == null){
+            return $this->redirectToRoute('app_enfant');
+        }else{
+            try {
+                return $this->render('exercices/'.$exercice->getLien().'.html.twig', [
+                    "exercice" => $exercice,
+                ]);
+            } catch (Exception $e) {
+                return $this->redirectToRoute('app_enfant');
+            }
+        }
     }
 }

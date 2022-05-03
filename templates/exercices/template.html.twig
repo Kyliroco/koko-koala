@@ -12,6 +12,36 @@
 {% block body %}
     <div id="app_div">
         <div id="app"> <!--CE BLOCK EST AMMENER A ETRE DANS DU VUE.JS. TOUT LE CONTENU DU DIV-->
+            <!-- PARTIE HAUTE : INFORMATION SUR L'EXERCICE -->
+            <div id="main_header">
+                <div class="flex">
+                    <h1 class="exercice_title">{{exercice.nom}}</h1>
+                    <div>
+                        <a class="button exit" href="{{ path('app_enfant')}}">x</a>
+                    </div>
+                </div>
+                <div class="flex" id="exercice_information">
+                    <div class="main_information">
+                        <div class="information_class_questions">
+                            <div class="alt_information_content">
+                                <div><p class="alt_information">&#x2022 {{exercice.matiere.nom}}</p></div>
+                                <div><p class="alt_information">&#x2022 {{exercice.categorie.nom}}</p></div>
+                                <div><p class="alt_information">&#x2022 {{exercice.classe.nom}}</p></div>
+                            </div>
+                            <div>
+                                <p class="questions"><span id="questionEnCours"></span> / <span id="nbQuestions"></span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <progress value="0" max="100"></progress>
+                        </div>
+                    </div>
+                    <div class="count">
+                        <p id="points"></p>
+                        <img id="count_icon" src="{{ asset('/img/icons/eucalyptus_leaves.png') }}">
+                    </div>
+                </div>
+            </div>
             {% block exo %} <!--ICI, BLOCK EXO EST UNE SOLUTION TEMPORAIRE AFIN DE CAPTER L'EXERCICE DE JOACKIM-->
             {% endblock %}
         </div>

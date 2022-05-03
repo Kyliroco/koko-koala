@@ -9,11 +9,11 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Enfant</h1>
+    <h1>Liste des exercices disponibles</h1>
     <ul>
         {% for e in exercices %}
             {% if e.visible == 0 %}
-                <li><a href="{{path(e.lien)}}">{{e.nom}}</a></li>
+                <li><a href="{{path('exo', {'exoId': e.id})}}">{{e.nom}}</a></li>
             {% endif %}
         {% endfor %}
     </ul>

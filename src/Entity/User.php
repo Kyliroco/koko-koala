@@ -13,7 +13,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
-#[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -48,11 +47,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $civilite;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $classe;
-
     #[ORM\ManyToMany(targetEntity: self::class)]
     private $enfants;
+
+    #[ORM\ManyToOne(targetEntity: Classe::class, inversedBy: 'users')]
+    private $classe;
 
     function __construct($username=null, $roles=null, $password=null, $prenom=null, $nom=null, $mail=null, $ville=null, $codePostal=null, $civilite=null, $classe=null) {
     	$this->username = $username;
@@ -211,18 +210,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getClasse(): ?string
-    {
-        return $this->classe;
-    }
-
-    public function setClasse(?string $classe): self
-    {
-        $this->classe = $classe;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, self>
      */
@@ -243,6 +230,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeEnfant(self $enfant): self
     {
         $this->enfants->removeElement($enfant);
+
+        return $this;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): self
+    {
+        $this->classe = $classe;
 
         return $this;
     }
