@@ -2,13 +2,12 @@ document.addEventListener("DOMContentLoaded", main);
 
 var nbQuestions = 10
 var questionEnCours = 1
-var points = 40
+var points = 60
 var pointsParQuestions = Math.round(points/nbQuestions)
 var fin = false
 
 var nbChiffres = 10
 var nbChiffresATrouver = 4
-var limiteChiffres = 100
 var chiffresATrouver = []
 
 function main(){
@@ -19,7 +18,7 @@ function main(){
     document.getElementById('nextButton').style.display = "none"
     document.getElementById("nbQuestions").textContent = nbQuestions;
     document.getElementById("questionEnCours").textContent = questionEnCours;
-    document.querySelector('progress').value = (questionEnCours-1)*10;
+    document.querySelector('progress').value = (questionEnCours-1)*100/nbQuestions;
 }
 
 function dessinerListe(){
@@ -28,7 +27,7 @@ function dessinerListe(){
     let unUl = document.createElement('ul');
     unUl.classList.add('horizontal_list');
 
-    let premierChiffre = Math.floor(Math.random()*(limiteChiffres - nbChiffres))+1
+    let premierChiffre = Math.floor(Math.random()*(limiteChiffresMax - (nbChiffres-1) - limiteChiffresMin))+limiteChiffresMin
     for(let i=0; i<nbChiffresATrouver; i++){
         var chiffre = 0;
         var limiteWhile = 20
@@ -42,7 +41,7 @@ function dessinerListe(){
         chiffresATrouver.push(chiffre)
     }
 
-    for(let i=premierChiffre; i<=(nbChiffres+premierChiffre); i++){
+    for(let i=premierChiffre; i<(nbChiffres+premierChiffre); i++){
         let unLi = document.createElement('li');
         if(chiffresATrouver.includes(i)){
             let unInput = document.createElement('input');
@@ -82,7 +81,7 @@ function check(){
     }
     document.getElementById("points").textContent = points;
     questionEnCours += 1
-    document.querySelector('progress').value = (questionEnCours-1)*10;
+    document.querySelector('progress').value = (questionEnCours-1)*100/nbQuestions;
     if(!fin){
         document.getElementById('nextButton').addEventListener('click', suivant)
         document.getElementById('nextButton').style.display = "inline-block"
@@ -92,7 +91,7 @@ function check(){
 function suivant(){
     document.getElementById('nextButton').removeEventListener('click', suivant)
     document.getElementById('nextButton').style.display = "none"
-    if(questionEnCours == 10){
+    if(questionEnCours == nbQuestions){
         fin = true
     }
 	main()
