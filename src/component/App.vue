@@ -1,6 +1,4 @@
-<template></template>
+<template>Tets</template>
 
-<script setup>
-console.log("test");
-</script>
+<script setup></script>
 <style></style>

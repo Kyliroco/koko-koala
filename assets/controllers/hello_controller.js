@@ -14,4 +14,4 @@ import { createPinia } from "pinia";
 
 import App from "../../src/component/App.vue";
 const app = createApp(App);
-app.mount("#app");
+app.mount("#app2");
