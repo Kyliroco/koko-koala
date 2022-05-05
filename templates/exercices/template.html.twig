@@ -62,3 +62,10 @@
 		{% endblock %}
 	</div>
 </div>{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var limiteChiffresMin = {{exercice.niveaux[niveau-1].min}}
+        var limiteChiffresMax = {{exercice.niveaux[niveau-1].max}}
+    </script>
+{% endblock %}
