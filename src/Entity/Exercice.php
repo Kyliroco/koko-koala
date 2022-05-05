@@ -99,10 +99,11 @@ class Exercice
         return $this;
     }
 
-    function __construct($nom, $matiere, $classe, $visible, $lien, $categorie) {
-    	$this->nom = $nom;
-    	$this->matiere = $matiere;
-    	$this->classe = $classe;
+    function __construct($nom, $matiere, $classe, $visible, $lien, $categorie)
+    {
+        $this->nom = $nom;
+        $this->matiere = $matiere;
+        $this->classe = $classe;
         $this->visible = $visible;
         $this->lien = $lien;
         $this->categorie = $categorie;
@@ -130,5 +131,9 @@ class Exercice
         $this->categorie = $categorie;
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->nom;
     }
 }

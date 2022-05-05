@@ -23,7 +23,7 @@ class Matiere
 
     public function __construct($nom)
     {
-    	$this->nom = $nom;
+        $this->nom = $nom;
         $this->exercices = new ArrayCollection();
     }
 
@@ -72,5 +72,9 @@ class Matiere
         }
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->nom;
     }
 }

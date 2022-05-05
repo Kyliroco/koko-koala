@@ -33,8 +33,12 @@ class Niveau
         return $this;
     }
 
-    function __construct($nom) {
-    	$this->nom = $nom;
-    
+    function __construct($nom)
+    {
+        $this->nom = $nom;
+    }
+    public function __toString(): string
+    {
+        return $this->nom;
     }
 }
