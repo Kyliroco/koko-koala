@@ -21,8 +21,6 @@ class Exercice
     #[ORM\ManyToOne(targetEntity: Matiere::class, inversedBy: 'exercices')]
     private $matiere;
 
-    #[ORM\ManyToMany(targetEntity: Niveau::class)]
-    private $niveau;
 
     #[ORM\Column(type: 'boolean')]
     private $visible;
@@ -68,17 +66,7 @@ class Exercice
         return $this;
     }
 
-    public function getNiveau(): ?Niveau
-    {
-        return $this->niveau;
-    }
 
-    public function setNiveau(?Niveau $niveau): self
-    {
-        $this->niveau = $niveau;
-
-        return $this;
-    }
 
     public function getVisible(): ?bool
     {

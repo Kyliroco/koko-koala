@@ -15,20 +15,21 @@ class ExercicesController extends AbstractController
     {
         return $this->redirectToRoute('app_enfant');
     }
-    #[Route('/exercices/{exoId}', name: 'exo')]
-    public function index($exoId, ExerciceRepository $exerciceRepository): Response
+    #[Route('/exercices/{exoId}/{niveau}', name: 'exo')]
+    public function index($exoId, $niveau, ExerciceRepository $exerciceRepository): Response
     {
         $exercice = $exerciceRepository->find($exoId);
-        if($exercice == null){
+        if ($exercice === null) {
             return $this->redirectToRoute('app_enfant');
-        }else{
-            try {
-                return $this->render('exercices/'.$exercice->getLien().'.html.twig', [
-                    "exercice" => $exercice,
-                ]);
-            } catch (Exception $e) {
-                return $this->redirectToRoute('app_enfant');
-            }
+        } else {
+            // try {
+            return $this->render('exercices/' . $exercice->getLien() . '.html.twig', [
+                "exercice" => $exercice,
+                "niveau" => $niveau,
+            ]);
+            // } catch (Exception $e) {
+            //     return $this->redirectToRoute('app_enfant');
+            // }
         }
     }
 }

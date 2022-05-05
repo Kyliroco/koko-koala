@@ -1,21 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EnfantController!{% endblock %}
+{% block title %}Hello EnfantController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
 
-<div class="example-wrapper">
-    <h1>Liste des exercices disponibles</h1>
-    <ul>
-        {% for e in exercices %}
-            {% if e.visible == 0 %}
-                <li><a href="{{path('exo', {'exoId': e.id})}}">{{e.nom}}</a></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
+	<div class="example-wrapper">
+		<h1>Liste des exercices disponibles</h1>
+		<ul>
+			{% for e in exercices %}
+				{% if e.visible == 0 %}
+					{% for n in e.niveaux %}
+						<li>
+							<a href="{{path('exo', {'exoId': e.id,'niveau':n.numero})}}">{{e.nom}}
+								({{n.nom}})</a>
+						</li>
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
 {% endblock %}

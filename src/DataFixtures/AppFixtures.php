@@ -38,7 +38,7 @@ class AppFixtures extends Fixture
         $exo = new Exercice("MathsEx1", $this->getReference(2), $this->getReference(3), 0, "MathsEx1", $this->getReference(5));
         $exo2 = new Exercice("FrançaisEx1", $this->getReference(1), $this->getReference(4), 1, "app_enfant", null);
         $exo3 = new Exercice("FrançaisEx2", $this->getReference(1), $this->getReference(3), 0, "app_enfant", null);
-        $exo4 = new Exercice("Remplir une suite (jusqu'à 10)", $this->getReference(2), $this->getReference(3), 0, "demo", $this->getReference(5));
+        $exo4 = new Exercice("Remplir une suite", $this->getReference(2), $this->getReference(3), 0, "demo", $this->getReference(5));
         $manager->persist($exo);
         $manager->persist($exo2);
         $manager->persist($exo3);
@@ -46,10 +46,30 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         //Mot de passe: testtest
-        $user = new User("Test", ["ROLE_PARENT", "ROLE_ENFANT"], "$2y$13$4saq9hX/1vS6XvV1eV6TYudeFXP0/.Mt.RRmKJqk9wOoe9TjWS70e",
-                        "testPrenom", "testNom", "test@test", "testVille", "testCodePostal", "Mme.", null);
-        $user2 = new User("testEnfant", ["ROLE_ENFANT"], "$2y$13$4saq9hX/1vS6XvV1eV6TYudeFXP0/.Mt.RRmKJqk9wOoe9TjWS70e",
-                        "testPrenom", "testNom", "test@test", "testVille", "testCodePostal", "", $this->getReference(3));
+        $user = new User(
+            "Test",
+            ["ROLE_PARENT", "ROLE_ENFANT"],
+            "$2y$13$4saq9hX/1vS6XvV1eV6TYudeFXP0/.Mt.RRmKJqk9wOoe9TjWS70e",
+            "testPrenom",
+            "testNom",
+            "test@test",
+            "testVille",
+            "testCodePostal",
+            "Mme.",
+            null
+        );
+        $user2 = new User(
+            "testEnfant",
+            ["ROLE_ENFANT"],
+            "$2y$13$4saq9hX/1vS6XvV1eV6TYudeFXP0/.Mt.RRmKJqk9wOoe9TjWS70e",
+            "testPrenom",
+            "testNom",
+            "test@test",
+            "testVille",
+            "testCodePostal",
+            "",
+            $this->getReference(3)
+        );
         $user->addEnfant($user2);
 
         $manager->persist($user);
