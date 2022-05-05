@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\Niveau;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 
 class NiveauCrudController extends AbstractCrudController
 {
@@ -18,6 +20,11 @@ class NiveauCrudController extends AbstractCrudController
     {
         return [
             TextField::new('nom'),
+            NumberField::new('numero'),
+            NumberField::new('min'),
+            NumberField::new('max'),
+            AssociationField::new('exercice')
+
         ];
     }
 }

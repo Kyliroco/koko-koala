@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ExerciceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ExerciceRepository::class)]
@@ -33,6 +35,9 @@ class Exercice
 
     #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'exercices')]
     private $categorie;
+
+    #[ORM\OneToMany(mappedBy: 'exercice', targetEntity: Niveau::class)]
+    private $niveaux;
 
     public function getId(): ?int
     {
@@ -107,6 +112,7 @@ class Exercice
         $this->visible = $visible;
         $this->lien = $lien;
         $this->categorie = $categorie;
+        $this->niveaux = new ArrayCollection();
     }
 
     public function getClasse(): ?Classe
@@ -135,5 +141,35 @@ class Exercice
     public function __toString(): string
     {
         return $this->nom;
+    }
+
+    /**
+     * @return Collection<int, Niveau>
+     */
+    public function getNiveaux(): Collection
+    {
+        return $this->niveaux;
+    }
+
+    public function addNiveau(Niveau $niveau): self
+    {
+        if (!$this->niveaux->contains($niveau)) {
+            $this->niveaux[] = $niveau;
+            $niveau->setExercice($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNiveau(Niveau $niveau): self
+    {
+        if ($this->niveaux->removeElement($niveau)) {
+            // set the owning side to null (unless already changed)
+            if ($niveau->getExercice() === $this) {
+                $niveau->setExercice(null);
+            }
+        }
+
+        return $this;
     }
 }
