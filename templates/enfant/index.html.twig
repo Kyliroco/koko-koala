@@ -21,7 +21,7 @@
 		<h1>Liste des exercices disponibles</h1>
 		<ul>
 			{% for e in exercices %}
-				{% if e.visible == 0 %}
+				{% if e.visible %}
 					{% for n in e.niveaux %}
 						<li>
 							<a href="{{path('exo', {'exoId': e.id,'niveau':n.numero})}}">{{e.nom}}
