@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -18,6 +19,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[ApiResource]
     private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
@@ -53,19 +55,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(targetEntity: Classe::class, inversedBy: 'users')]
     private $classe;
 
-    function __construct($username=null, $roles=null, $password=null, $prenom=null, $nom=null, $mail=null, $ville=null, $codePostal=null, $civilite=null, $classe=null) {
-    	$this->username = $username;
-    	$this->roles = $roles;
-    	$this->password = $password;
-    	$this->prenom = $prenom;
-    	$this->nom = $nom;
-    	$this->mail = $mail;
-    	$this->ville = $ville;
-    	$this->codePostal = $codePostal;
-    	$this->civilite = $civilite;
-    	$this->classe = $classe;
+    function __construct($username = null, $roles = null, $password = null, $prenom = null, $nom = null, $mail = null, $ville = null, $codePostal = null, $civilite = null, $classe = null)
+    {
+        $this->username = $username;
+        $this->roles = $roles;
+        $this->password = $password;
+        $this->prenom = $prenom;
+        $this->nom = $nom;
+        $this->mail = $mail;
+        $this->ville = $ville;
+        $this->codePostal = $codePostal;
+        $this->civilite = $civilite;
+        $this->classe = $classe;
         $this->enfants = new ArrayCollection();
-    
     }
 
     public function getId(): ?int

@@ -11,7 +11,6 @@
 
 {% block body %}
 	<div id="app_div">
-		<div id="app2"></div>
 		<div id="app">
 			<!--CE BLOCK EST AMMENER A ETRE DANS DU VUE.JS. TOUT LE CONTENU DU DIV-->
 			<!-- PARTIE HAUTE : INFORMATION SUR L'EXERCICE -->
@@ -61,11 +60,8 @@
 			<!--ICI, BLOCK EXO EST UNE SOLUTION TEMPORAIRE AFIN DE CAPTER L'EXERCICE DE JOACKIM-->
 		{% endblock %}
 	</div>
-</div>{% endblock %}
-
-{% block javascripts %}
-    <script>
-        var limiteChiffresMin = {{exercice.niveaux[niveau-1].min}}
-        var limiteChiffresMax = {{exercice.niveaux[niveau-1].max}}
-    </script>
-{% endblock %}
+</div>{% endblock %}{% block javascripts %}
+<script>
+	var limiteChiffresMin = {{ exercice.niveaux[niveau-1].min }}
+var limiteChiffresMax = {{ exercice.niveaux[niveau-1].max }}
+</script>{% endblock %}
