@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ExercicesController extends AbstractController
 {
+
     #[Route('/exercices', name: 'app_exercices')]
     public function enfantDashboard(): Response
     {

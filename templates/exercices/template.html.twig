@@ -11,6 +11,7 @@
 
 {% block body %}
 	<div id="app_div">
+		<div id="app2"></div>
 		<div id="app">
 			<!--CE BLOCK EST AMMENER A ETRE DANS DU VUE.JS. TOUT LE CONTENU DU DIV-->
 			<!-- PARTIE HAUTE : INFORMATION SUR L'EXERCICE -->
@@ -61,6 +62,7 @@
 		{% endblock %}
 	</div>
 </div>{% endblock %}{% block javascripts %}
+{{ encore_entry_script_tags('app') }}
 <script>
 	var limiteChiffresMin = {{ exercice.niveaux[niveau-1].min }}
 var limiteChiffresMax = {{ exercice.niveaux[niveau-1].max }}

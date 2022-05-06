@@ -11,7 +11,10 @@ import { Controller } from "@hotwired/stimulus";
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import router from "../../src/router/index.js";
 
-import App from "../../src/component/App.vue";
+import App from "../../src/components/App.vue";
 const app = createApp(App);
+app.use(createPinia());
+app.use(router);
 app.mount("#app2");

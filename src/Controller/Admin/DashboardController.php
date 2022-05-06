@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Categorie;
+use App\Entity\Classe;
 use App\Entity\Exercice;
 use App\Entity\Matiere;
 use App\Entity\Niveau;
@@ -56,6 +57,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Exercice', 'fas fa-list', Exercice::class);
         yield MenuItem::linkToCrud('Matiere', 'fas fa-list', Matiere::class);
         yield MenuItem::linkToCrud('Niveau', 'fas fa-list', Niveau::class);
+        yield MenuItem::linkToCrud('Classe', 'fas fa-list', Classe::class);
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
         yield MenuItem::linkToCrud('Categorie', 'fas fa-list', Categorie::class);
     }
