@@ -9,12 +9,13 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: ClasseRepository::class)]
+#[ApiResource]
+
 class Classe
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[ApiResource]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]

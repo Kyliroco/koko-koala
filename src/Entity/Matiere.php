@@ -9,22 +9,23 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: MatiereRepository::class)]
+#[ApiResource(
+    attributes: [],
+    collectionOperations: [
+        "get",
+        "post",
+    ],
+    itemOperations: [
+        "get",
+        "put",
+    ],
+)]
 class Matiere
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[ApiResource(
-        attributes: [],
-        collectionOperations: [
-            "get",
-            "post",
-        ],
-        itemOperations: [
-            "get",
-            "put",
-        ],
-    )]
+
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]

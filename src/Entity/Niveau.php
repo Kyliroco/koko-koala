@@ -7,22 +7,23 @@ use App\Repository\NiveauRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: NiveauRepository::class)]
+#[ApiResource(
+    attributes: [],
+    collectionOperations: [
+        "get",
+        "post",
+    ],
+    itemOperations: [
+        "get",
+        "put",
+    ],
+)]
 class Niveau
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[ApiResource(
-        attributes: [],
-        collectionOperations: [
-            "get",
-            "post",
-        ],
-        itemOperations: [
-            "get",
-            "put",
-        ],
-    )]
+
     private $id;
 
     #[ORM\Column(type: 'integer')]
