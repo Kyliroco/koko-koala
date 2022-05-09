@@ -1,6 +1,6 @@
 <template>
-  <HeaderExercice :class="'CP'" />
-  <div v-if="store.exercice == 4"><RemplirSuite /></div>
+  <HeaderExercice :numero="store.exercice - 1" />
+  <div v-if="store.niveau == 4"><RemplirSuite /></div>
 </template>
 
 <script setup>
@@ -10,12 +10,9 @@ import { onMounted, computed } from "vue";
 import RemplirSuite from "./Exercices/RemplirSuite.vue";
 const store = useKokoStore();
 
-onMounted(() => {
-  store.fetchClasses();
-  store.getNiveauExercice();
-});
-const getClasses = computed(() => {
-  return store.getClasse;
-});
+// onMounted(() => {
+//   store.getNiveauExercice();
+//   store.fetchExercices();
+// });
 </script>
 <style></style>

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import axios from "axios";
+import Axios from "axios";
 
 export const useKokoStore = defineStore({
   id: "koko",
@@ -12,23 +12,7 @@ export const useKokoStore = defineStore({
     niveaux: [],
     niveau: 0,
   }),
-  getters: {
-    getUsers(state) {
-      return state.users;
-    },
-    getCategorie(state) {
-      return state.categories;
-    },
-    getClasse(state) {
-      return state.classes;
-    },
-    getExercice(state) {
-      return state.exercices;
-    },
-    getNiveau(state) {
-      return state.niveaux;
-    },
-  },
+  getters: {},
   actions: {
     getNiveauExercice() {
       let exercice_niveau = document.location.href.substring(
@@ -45,7 +29,7 @@ export const useKokoStore = defineStore({
     },
     async fetchUsers() {
       try {
-        const data = await axios.get("http://localhost:8000/api/users?page=1");
+        const data = await Axios.get("http://localhost:8000/api/users?page=1");
         this.users = data.data["hydra:member"];
       } catch (error) {
         alert(error);
@@ -54,7 +38,7 @@ export const useKokoStore = defineStore({
     },
     async fetchCategorie() {
       try {
-        const data = await axios.get(
+        const data = await Axios.get(
           "http://localhost:8000/api/categories?page=1"
         );
         this.categories = data.data["hydra:member"];
@@ -63,33 +47,25 @@ export const useKokoStore = defineStore({
         console.log(error);
       }
     },
-    async fetchClasses() {
-      try {
-        const data = await axios.get(
-          "http://localhost:8000/api/classes?page=1"
-        );
-        // console.log(data.data["hydra:member"]);
-        this.classes = data.data["hydra:member"];
-      } catch (error) {
-        alert(error);
-        console.log(error);
-      }
+    fetchClasses() {
+      Axios.get("http://localhost:8000/api/classes?page=1")
+        .then((response) => response.data)
+        .then((donneesClasses) => {
+          this.classes = donneesClasses["hydra:member"];
+        });
+      // console.log(data.data["hydra:member"]);
     },
-    async fetchExercices() {
-      try {
-        const data = await axios.get(
-          "http://localhost:8000/api/exercices?page=1"
-        );
-        // console.log(data.data["hydra:member"]);
-        this.exercices = data.data["hydra:member"];
-      } catch (error) {
-        alert(error);
-        console.log(error);
-      }
+    fetchExercices() {
+      Axios.get("http://localhost:8000/api/exercices?page=1")
+        .then((response) => response.data)
+        .then((donneesExercices) => {
+          this.exercices = donneesExercices["hydra:member"];
+        })
+        .then();
     },
     async fetchNiveaux() {
       try {
-        const data = await axios.get(
+        const data = await Axios.get(
           "http://localhost:8000/api/niveaus?page=1"
         );
         // console.log(data.data["hydra:member"]);

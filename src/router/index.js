@@ -1,12 +1,18 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import App from "../components/App.vue";
+import Exercice from "../components/Exercice.vue";
 
 const routes = [
   // À compléter
   {
-    path: "/",
+    path: "/0",
     name: "exercice",
-    component: App,
+    component: Exercice,
+  },
+  {
+    path: "/:exercice/:niveau",
+    name: "exercice_niveau",
+    component: Exercice,
   },
 ];
 
