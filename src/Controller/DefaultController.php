@@ -15,4 +15,11 @@ class DefaultController extends AbstractController
             'controller_name' => 'DefaultController',
         ]);
     }
+    #[Route('/demo', name: 'demo')]
+    public function demo(): Response
+    {
+        return $this->render('exercices/demo2.html.twig', [
+            'controller_name' => 'DefaultController',
+        ]);
+    }
 }

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/exercices/base.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/exercices/information_bar.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/exercices/exercices.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+	<div id="app_div">
+		<div id="app">
+			<!--CE BLOCK EST AMMENER A ETRE DANS DU VUE.JS. TOUT LE CONTENU DU DIV-->
+			<!-- PARTIE HAUTE : INFORMATION SUR L'EXERCICE -->
+				<div id="main_header"> <div class="flex">
+					<h1 class="exercice_title">Décomposer</h1>
+					<div>
+						<a class="button exit" href="{{ path('app_enfant')}}">x</a>
+					</div>
+				</div>
+				<div class="flex" id="exercice_information">
+					<div class="main_information">
+						<div class="information_class_questions">
+							<div class="alt_information_content">
+								<div>
+									<p class="alt_information">&#x2022
+										toto</p>
+								</div>
+								<div>
+									<p class="alt_information">&#x2022
+										toto</p>
+								</div>
+								<div>
+									<p class="alt_information">&#x2022
+										toto</p>
+								</div>
+							</div>
+							<div>
+								<p class="questions">
+									<span id="questionEnCours"></span>
+									/
+									<span id="nbQuestions"></span>
+								</p>
+							</div>
+						</div>
+						<div>
+							<progress value="0" max="100"></progress>
+					</div>
+				</div>
+				<div class="count">
+					<p id="points"></p>
+					<img id="count_icon" src="{{ asset('/img/icons/eucalyptus_leaves.png') }}">
+				</div>
+			</div>
+		</div>
+		{% block exo %}
+			<!--ICI, BLOCK EXO EST UNE SOLUTION TEMPORAIRE AFIN DE CAPTER L'EXERCICE DE JOACKIM-->
+		{% endblock %}
+	</div>
+</div>{% endblock %}{% block javascripts %}
+{{ encore_entry_script_tags('app') }}
+<script>
+</script>{% endblock %}
