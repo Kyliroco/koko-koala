@@ -11,14 +11,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class ExercicesController extends AbstractController
 {
 
-    #[Route('/exercices', name: 'app_exercices')]
-    public function enfantDashboard(): Response
+    // #[Route('/exercices', name: 'app_exercices')]
+    // public function enfantDashboard(): Response
+    // {
+    //     return $this->redirectToRoute('app_enfant');
+    // }
+    #[Route('/exercices', name: 'exo')]
+    public function index(ExerciceRepository $exerciceRepository): Response
     {
-        return $this->redirectToRoute('app_enfant');
-    }
-    #[Route('/exercices/{exoId}/{niveau}', name: 'exo')]
-    public function index($exoId, $niveau, ExerciceRepository $exerciceRepository): Response
-    {
+        $exoId = 4;
+        $niveau = 1;
         $exercice = $exerciceRepository->find($exoId);
         if ($exercice === null) {
             return $this->redirectToRoute('app_enfant');

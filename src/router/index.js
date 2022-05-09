@@ -4,11 +4,11 @@ import Exercice from "../components/Exercice.vue";
 
 const routes = [
   // À compléter
-  {
-    path: "/0",
-    name: "exercice",
-    component: Exercice,
-  },
+  // {
+  //   path: "/",
+  //   name: "exercice",
+  //   component: Exercice,
+  // },
   {
     path: "/:exercice/:niveau",
     name: "exercice_niveau",

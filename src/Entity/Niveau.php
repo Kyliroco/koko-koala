@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\NiveauRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: NiveauRepository::class)]
@@ -17,28 +18,34 @@ use ApiPlatform\Core\Annotation\ApiResource;
         "get",
         "put",
     ],
+    normalizationContext: ['groups' => ['niveau']]
 )]
 class Niveau
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-
+    #[Groups("exercice", "matiere", "categorie", "classe",   "niveau")]
     private $id;
 
     #[ORM\Column(type: 'integer')]
+    #[Groups("exercice", "matiere", "categorie", "classe",  "niveau")]
     private $numero;
 
     #[ORM\ManyToOne(targetEntity: Exercice::class, inversedBy: 'niveaux')]
+    #[Groups("niveau")]
     private $exercice;
 
     #[ORM\Column(type: 'integer')]
+    #[Groups("exercice", "matiere", "categorie", "classe",  "niveau")]
     private $min;
 
     #[ORM\Column(type: 'integer')]
+    #[Groups("exercice", "matiere", "categorie", "classe",  "niveau")]
     private $max;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups("exercice", "matiere", "categorie", "classe",  "niveau")]
     private $nom;
 
 

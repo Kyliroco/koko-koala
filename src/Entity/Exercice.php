@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ExerciceRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: ExerciceRepository::class)]
@@ -19,35 +20,42 @@ use Doctrine\Common\Collections\ArrayCollection;
         "get",
         "put",
     ],
+    normalizationContext: ['groups' => ['exercice']]
 )]
 class Exercice
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-
+    #[Groups("exercice", "categorie", "matiere", "classe", "niveau")]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups("exercice", "categorie", "matiere", "classe", "niveau")]
     private $nom;
 
     #[ORM\ManyToOne(targetEntity: Matiere::class, inversedBy: 'exercices')]
+    #[Groups("exercice", "categorie",  "classe", "niveau")]
     private $matiere;
 
 
     #[ORM\Column(type: 'boolean')]
+    #[Groups("exercice", "categorie", "matiere", "classe", "niveau")]
     private $visible;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $lien;
 
     #[ORM\ManyToOne(targetEntity: Classe::class, inversedBy: 'exercices')]
+    #[Groups("exercice", "categorie", "matiere", "niveau")]
     private $classe;
 
     #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'exercices')]
+    #[Groups("exercice", "matiere", "classe", "niveau")]
     private $categorie;
 
     #[ORM\OneToMany(mappedBy: 'exercice', targetEntity: Niveau::class)]
+    #[Groups("exercice", "categorie", "matiere",  "classe")]
     private $niveaux;
 
     public function getId(): ?int
