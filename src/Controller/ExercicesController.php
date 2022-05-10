@@ -26,7 +26,7 @@ class ExercicesController extends AbstractController
             return $this->redirectToRoute('app_enfant');
         } else {
             // try {
-            return $this->render('exercices/' . $exercice->getLien() . '.html.twig', [
+            return $this->render('exercices/template.html.twig', [
                 "exercice" => $exercice,
                 "niveau" => $niveau,
             ]);

@@ -38,7 +38,7 @@ class AppFixtures extends Fixture
         $exo = new Exercice("MathsEx1", $this->getReference(2), $this->getReference(3), 0, "MathsEx1", $this->getReference(5));
         $exo2 = new Exercice("FrançaisEx1", $this->getReference(1), $this->getReference(4), 1, "app_enfant", null);
         $exo3 = new Exercice("FrançaisEx2", $this->getReference(1), $this->getReference(3), 0, "app_enfant", null);
-        $exo4 = new Exercice("Remplir une suite", $this->getReference(2), $this->getReference(3), 0, "demo", $this->getReference(5));
+        $exo4 = new Exercice("Remplir une suite", $this->getReference(2), $this->getReference(3), 0, "RemplirSuite", $this->getReference(5));
         $manager->persist($exo);
         $manager->persist($exo2);
         $manager->persist($exo3);

@@ -44,6 +44,7 @@ class Exercice
     private $visible;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups("exercice", "categorie", "matiere", "classe", "niveau")]
     private $lien;
 
     #[ORM\ManyToOne(targetEntity: Classe::class, inversedBy: 'exercices')]

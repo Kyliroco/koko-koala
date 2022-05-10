@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: space-around;
 }
-#app {
+#app, #app2 {
     background-color: white;
     width: 60vw;
     height: 70vh;

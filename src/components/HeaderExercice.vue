@@ -1,5 +1,5 @@
 <template>
-  <div id="main_header">
+  <div id="main_header" v-if="exercice">
     <div class="flex">
       <h1
         class="exercice_title"
@@ -7,7 +7,7 @@
         :key="index"
       >
         <p></p>
-        <h1 v-if="niveau.numero == route.params.niveau">
+        <h1 v-if="niveau.numero == props.niveau">
           {{ exercice.nom }} ({{ niveau.nom }})
         </h1>
       </h1>
@@ -31,18 +31,18 @@
           </div>
           <div>
             <p class="questions">
-              <!-- <span id="questionEnCours">{{ questionEnCours }}</span> -->
-
-              <!-- <span id="nbQuestions">{{ nbQuestions }}</span> -->
+              <span id="questionEnCours">{{ exoParam.questionEnCours }}</span>
+              /
+              <span id="nbQuestions">{{ exoParam.nbQuestions }}</span>
             </p>
           </div>
         </div>
         <div>
-          <progress value="1.0" max="100"></progress>
+          <progress value="0" max="100"></progress>
         </div>
       </div>
       <div class="count">
-        <!-- <p id="points">{{ points }}</p> -->
+        <p id="points">{{ exoParam.points }}</p>
         <img
           id="count_icon"
           src="/img/icons/eucalyptus_leaves.png"
@@ -55,15 +55,12 @@
 
 <script setup>
 import { useKokoStore } from "../stores/index";
-import { useRoute, useRouter } from "vue-router";
-console.log("lancement HeaderExercice");
 const store = useKokoStore();
-const route = useRoute();
-console.log(route.params.exercice);
-const router = useRouter();
 
 const props = defineProps({
   exercice: Object,
+  exoParam: Object,
+  niveau: Number
 });
 </script>
 <style></style>
