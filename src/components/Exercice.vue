@@ -1,7 +1,5 @@
 <template>
-  <div v-if="exercice == 4">
-    <component :is="comp" v-if="store.exercices[exercice - 1]" :exercice="store.exercices[exercice - 1]" :niveau="niveau"></component>
-  </div>
+  <component :is="comp" v-if="store.exercices[exercice - 1]" :exercice="store.exercices[exercice - 1]" :niveau="niveau"></component>
 </template>
 
 <script setup>
@@ -17,8 +15,9 @@ const niveau = ref(route.params.niveau);
 onMounted(() => {
   store.fetchExercices();
 });
-const componentName = "RemplirSuite"
+
 const comp = computed(function (){
+      const componentName = store.exercices[exercice.value - 1].lien || null
       return defineAsyncComponent(() => import(`./Exercices/${componentName}.vue`))
 })
 
