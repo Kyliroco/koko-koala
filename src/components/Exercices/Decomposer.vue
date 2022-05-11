@@ -2,15 +2,10 @@
     <HeaderExercice :exercice="props.exercice" :exoParam="exoParam" :niveau="props.niveau"/>
     <div id="exercice">
         <div class="blank_3"></div>
-        <div><p class="center big_element" id="nombreChoisis">5452</p></div>
+        <div><p class="center big_element" id="nombreChoisis"></p></div>
         <div class="blank_3"></div>
         <div>
-            <ul class="flex" id="liste">
-                <li class="input_legend" v-if="nbChiffresATrouver >= 1"><input class="blank arround1"> Unités</li>
-                <li class="input_legend" v-if="nbChiffresATrouver >= 2"><input class="blank arround1"> Dizaines</li>
-                <li class="input_legend" v-if="nbChiffresATrouver >= 3"><input class="blank arround1"> Centaines</li>
-                <li class="input_legend" v-if="nbChiffresATrouver >= 4"><input class="blank arround1"> Milliers</li>
-            </ul>
+            <ul class="flex" id="liste"></ul>
         </div>
         <div class="blank_6">
 
