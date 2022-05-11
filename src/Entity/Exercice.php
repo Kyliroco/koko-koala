@@ -114,7 +114,7 @@ class Exercice
         return $this;
     }
 
-    function __construct($nom, $matiere, $classe, $visible, $lien, $categorie)
+    function __construct($nom = null, $matiere = null, $classe = null, $visible = null, $lien = null, $categorie = null)
     {
         $this->nom = $nom;
         $this->matiere = $matiere;

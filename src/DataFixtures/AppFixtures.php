@@ -35,14 +35,16 @@ class AppFixtures extends Fixture
         $manager->persist($categorie);
         $manager->flush();
 
-        $exo = new Exercice("MathsEx1", $this->getReference(2), $this->getReference(3), 0, "MathsEx1", $this->getReference(5));
-        $exo2 = new Exercice("FrançaisEx1", $this->getReference(1), $this->getReference(4), 1, "app_enfant", null);
-        $exo3 = new Exercice("FrançaisEx2", $this->getReference(1), $this->getReference(3), 0, "app_enfant", null);
-        $exo4 = new Exercice("Remplir une suite", $this->getReference(2), $this->getReference(3), 0, "RemplirSuite", $this->getReference(5));
+        $exo = new Exercice("MathsEx1", $this->getReference(2), $this->getReference(3), 1, "MathsEx1", $this->getReference(5));
+        $exo2 = new Exercice("FrançaisEx1", $this->getReference(1), $this->getReference(4), 0, "app_enfant", null);
+        $exo3 = new Exercice("FrançaisEx2", $this->getReference(1), $this->getReference(3), 1, "app_enfant", null);
+        $exo4 = new Exercice("Remplir une suite", $this->getReference(2), $this->getReference(3), 1, "RemplirSuite", $this->getReference(5));
+        $exo5 = new Exercice("Décomposer", $this->getReference(2), $this->getReference(3), 1, "Decomposer", $this->getReference(5));
         $manager->persist($exo);
         $manager->persist($exo2);
         $manager->persist($exo3);
         $manager->persist($exo4);
+        $manager->persist($exo5);
         $manager->flush();
 
         //Mot de passe: testtest
