@@ -39,7 +39,7 @@ class Matiere
     #[Groups("matiere")]
     private $exercices;
 
-    public function __construct($nom)
+    public function __construct($nom = null)
     {
         $this->nom = $nom;
         $this->exercices = new ArrayCollection();
