@@ -31,7 +31,7 @@
 					<div id="nav_bar_menu_link">
 						<ul>
 							{% if is_granted('ROLE_USER') %}
-								{% if is_granted('ROLE_USER') %}
+								{% if is_granted('ROLE_PARENT') %}
 									<li>
 										<a href="{{ path('app_parent')}}">Tableau de bord</a>
 									</li>
