@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\NiveauRepository;
-use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: NiveauRepository::class)]
 #[ApiResource(
@@ -59,13 +60,18 @@ class Niveau
 
 
 
-    public function __construct()
+    public function __construct($numero, $min, $max, $nom, $exercice)
     {
+        $this->numero = $numero;
+        $this->min = $min;
+        $this->max = $max;
+        $this->nom = $nom;
+        $this->exercice = $exercice;
     }
-    // public function __toString(): string
-    // {
-    //     return $this->nom;
-    // }
+    public function __toString(): string
+    {
+        return $this->nom;
+    }
 
     public function getNumero(): ?int
     {
