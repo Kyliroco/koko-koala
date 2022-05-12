@@ -1,6 +1,6 @@
 <template>
-  <HeaderExercice  v-if="store.exercices[exercice - 1] && exoParam != null" :exercice="store.exercices[exercice - 1]" :exoParam="exoParam" :niveau="niveau"/>
-  <component :is="comp" v-if="store.exercices[exercice - 1]" :exercice="store.exercices[exercice - 1]" :niveau="store.exercices[exercice - 1].niveaux.filter(n => n.numero == niveau)[0]" :exoParam="exoParam" @defineExoParam="defineExoParam" @mainExercice="mainExercice" @suivantExercice="suivantExercice" @checkButton="checkButton" @checkExercice="checkExercice"></component>
+  <HeaderExercice  v-if="exercice && exoParam != null" :exercice="exercice" :exoParam="exoParam" :niveau="niveau"/>
+  <component :is="comp" v-if="exercice" :exercice="exercice" :niveau="exercice.niveaux.filter(n => n.numero == niveau)[0]" :exoParam="exoParam" @defineExoParam="defineExoParam" @mainExercice="mainExercice" @suivantExercice="suivantExercice" @checkButton="checkButton" @checkExercice="checkExercice"></component>
 </template>
 
 <script setup>
@@ -11,16 +11,18 @@ import { useRoute } from "vue-router";
 
 const store = useKokoStore();
 const route = useRoute();
-const exercice = ref(route.params.exercice);
+const exerciceId = ref(route.params.exercice);
 const niveau = ref(route.params.niveau);
 var exoParam = ref(null);
 onMounted(() => {
   store.fetchExercices();
 });
 
+const exercice = computed(function(){return store.exercices.filter(e => e.id == exerciceId.value)[0] || null})
+
 const comp = computed(function (){
-      const componentName = store.exercices[exercice.value - 1].lien || null
-      return defineAsyncComponent(() => import(`./Exercices/${componentName}.vue`))
+  const componentName = exercice.value.lien || null
+  return defineAsyncComponent(() => import(`./Exercices/${componentName}.vue`))
 })
 
 function defineExoParam(exoParamChild){

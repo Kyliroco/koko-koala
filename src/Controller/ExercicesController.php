@@ -21,8 +21,10 @@ class ExercicesController extends AbstractController
     {
         $exercice = $exerciceRepository->find($exoId);
         $niveau = null;
-        foreach($exercice->getNiveaux() as $n){
-            if($n->getNumero() == $niveauId){$niveau = $n;break;}
+        if($exercice != null){
+            foreach($exercice->getNiveaux() as $n){
+                if($n->getNumero() == $niveauId){$niveau = $n;break;}
+            }
         }
         if ($exercice === null || $niveau === null) {
             return $this->redirectToRoute('app_enfant');

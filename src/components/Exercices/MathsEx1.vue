@@ -15,10 +15,8 @@
 </template>
 
 <script setup>
-    import { useKokoStore } from "../../stores/index";
     import { nextTick } from "vue";
 
-    const store = useKokoStore();
     const props = defineProps({
         exercice: Object,
         exoParam: Object,
