@@ -23,7 +23,7 @@
 				{% if e.visible %}
 					{% for n in e.niveaux %}
 						<li>
-							<a href="/exercices#/{{e.id}}/{{n.numero}}">{{e.nom}}
+							<a href="/exercices/{{e.id}}/{{n.numero}}#/{{e.id}}/{{n.numero}}">{{e.nom}}
 								({{n.nom}})</a>
 						</li>
 					{% endfor %}
