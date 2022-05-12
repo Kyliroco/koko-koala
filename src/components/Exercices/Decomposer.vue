@@ -11,7 +11,6 @@
         </div>
         <div id="actions">
             <div class="action_button">
-                <button id="startButton" class="button_large" @click="main()">Commencer</button>
                 <button id="checkButton" class="button_large" style="display: none">Vérifier</button>
                 <button id="nextButton" class="button_large" style="display: none">Continuer</button>
             </div>
@@ -21,6 +20,8 @@
 
 <script setup>
   import { useKokoStore } from "../../stores/index";
+  import { nextTick } from "vue";
+
   const store = useKokoStore();
   const props = defineProps({
     exercice: Object,
@@ -39,7 +40,8 @@
 
   var limiteChiffresMin = props.niveau.min
   var limiteChiffresMax = props.niveau.max
-
+  
+  nextTick(main)
 
   var nbChiffresATrouver = 0;
   var chiffresATrouver = [];

@@ -8,7 +8,6 @@
     <div class="blank_3"></div>
     <div id="actions">
       <div class="action_button">
-        <button id="startButton" class="button_large" @click="main()">Commencer</button>
         <button
           id="checkButton"
           class="button_large"
@@ -27,6 +26,8 @@
 
 <script setup>
     import { useKokoStore } from "../../stores/index";
+    import { nextTick } from "vue";
+
     const store = useKokoStore();
     const props = defineProps({
         exercice: Object,
@@ -49,22 +50,19 @@
 
     let image = new Image();
     image.src = '/img/koko.png';
-    let imageLoaded = false;
-    image.addEventListener('load', function(){imageLoaded = true});
+    image.addEventListener('load', ()=>{nextTick(main)});
 
     var nbImagesParLignes = Math.ceil(Math.sqrt(limiteChiffresMax))
     var nbImages = 0
 
     function main(){
-        if(imageLoaded){
-            var canvas = document.getElementById("canvas");
-            var ctx = canvas.getContext("2d");
-            nbImages = Math.floor(Math.random() * (limiteChiffresMax-limiteChiffresMin))+limiteChiffresMin
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        nbImages = Math.floor(Math.random() * (limiteChiffresMax-limiteChiffresMin))+limiteChiffresMin
 
-            dessinerBilles(ctx, canvas, image, nbImages)
+        dessinerBilles(ctx, canvas, image, nbImages)
 
-            emit("mainExercice", suivant, check);
-        }
+        emit("mainExercice", suivant, check);
     }
 
     function dessinerBilles(ctx, canvas, image, nbBilles){//Fait pour des images carrées ex: 32x32, 512x512, 1024x1024

@@ -8,7 +8,6 @@
     <div class="blank_3"></div>
     <div id="actions">
       <div class="action_button">
-        <button id="startButton" class="button_large" @click="main()">Commencer</button>
         <button id="nextButton" class="button_large" style="display:none">Continuer</button>
       </div>
     </div>
@@ -17,6 +16,8 @@
 
 <script setup>
     import { useKokoStore } from "../../stores/index";
+    import { nextTick } from "vue";
+
     const store = useKokoStore();
     const props = defineProps({
         exercice: Object,
@@ -39,32 +40,29 @@
 
     let image = new Image();
     image.src = '/img/koko.png';
-    let imageLoaded = false;
-    image.addEventListener('load', function(){imageLoaded = true});
+    image.addEventListener('load', ()=>{nextTick(main)});
 
     var nbImagesParLignes = Math.ceil(Math.sqrt(limiteChiffresMax))
     var nbImagesA = 0
     var nbImagesB = 0
 
     function main(){
-        if(imageLoaded){
-            var canvasA = document.getElementById("canvas1");
-            var ctxA = canvasA.getContext("2d");
-            var canvasB = document.getElementById("canvas2");
-            var ctxB = canvasB.getContext("2d");
-            nbImagesA = Math.floor(Math.random() * (limiteChiffresMax-limiteChiffresMin))+limiteChiffresMin
-            do{
-                nbImagesB = Math.floor(Math.random() * (limiteChiffresMax-limiteChiffresMin))+limiteChiffresMin
-            }while(nbImagesB == nbImagesA)
+        var canvasA = document.getElementById("canvas1");
+        var ctxA = canvasA.getContext("2d");
+        var canvasB = document.getElementById("canvas2");
+        var ctxB = canvasB.getContext("2d");
+        nbImagesA = Math.floor(Math.random() * (limiteChiffresMax-limiteChiffresMin))+limiteChiffresMin
+        do{
+            nbImagesB = Math.floor(Math.random() * (limiteChiffresMax-limiteChiffresMin))+limiteChiffresMin
+        }while(nbImagesB == nbImagesA)
 
-            dessinerBilles(ctxA, canvasA, image, nbImagesA)
-            dessinerBilles(ctxB, canvasB, image, nbImagesB)
+        dessinerBilles(ctxA, canvasA, image, nbImagesA)
+        dessinerBilles(ctxB, canvasB, image, nbImagesB)
 
-            document.getElementById('canvas1').addEventListener("click", check)
-            document.getElementById('canvas2').addEventListener("click", check)
+        document.getElementById('canvas1').addEventListener("click", check)
+        document.getElementById('canvas2').addEventListener("click", check)
 
-            emit("mainExercice", suivant, check, false);
-        }
+        emit("mainExercice", suivant, check, false);
     }
 
     function dessinerBilles(ctx, canvas, image, nbBilles){//Fait pour des images carrées ex: 32x32, 512x512, 1024x1024

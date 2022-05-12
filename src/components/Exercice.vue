@@ -28,7 +28,6 @@ function defineExoParam(exoParamChild){
 }
 
 function mainExercice(suivant, check, boutonCheck = true){
-  document.getElementById('startButton').style.display = "none"
   document.getElementById('nextButton').addEventListener('click', suivant)
   document.getElementById('nextButton').style.display = "none"
   if(boutonCheck){
