@@ -12,7 +12,14 @@ class DefaultController extends AbstractController
     public function index(): Response
     {
         return $this->render('default/index.html.twig', [
-            'controller_name' => 'DefaultController',
+
+        ]);
+    }
+    #[Route('/qui-sommes-nous', name: 'who_are_we')]
+    public function whoAreWe(): Response
+    {
+        return $this->render('default/whoAreWe.html.twig', [
+
         ]);
     }
     #[Route('/demo', name: 'demo')]
