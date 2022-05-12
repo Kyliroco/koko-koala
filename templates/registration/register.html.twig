@@ -15,7 +15,9 @@
         <div class="main_register">
             <div>
                 {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.civilite) }}
+                <div class="form_element_line">
+                    {{ form_row(registrationForm.civilite) }}
+                </div>
                 <div class="form_element">
                     {{ form_row(registrationForm.nom) }}
                 </div>
@@ -41,18 +43,20 @@
                         label: 'Mot de passe'
                     }) }}
                 </div>
+                <div class="form_element_line">
+                    {{ form_row(registrationForm.agreeTerms, {
+                        label: "J'accepte les termes"
+                    }) }}
+                </div>
+                <div class="form_button">
+                    <button type="submit" class="btn">S'inscrire</button>
+                </div>
 
-                {{ form_row(registrationForm.agreeTerms, {
-                    label: "J'accepte les termes"
-                }) }}
 
-
-
-                <button type="submit" class="btn">S'inscrire</button>
                 {{ form_end(registrationForm) }}
             </div>
-            <div>
-                <img src={{ asset('img/background/koko_canva.png') }}>
+            <div id="koko_canva_box">
+                <img id="koko_canva" src={{ asset('img/background/koko_canva.png') }}>
             </div>
         </div>
 

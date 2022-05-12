@@ -29,7 +29,7 @@ main {
     border-bottom-width: medium;
     border-bottom: 1px solid grey;
     font-family: 'Montserrat', sans-serif;
-    margin-bottom: 2rem;
+    margin-bottom: 1.1rem;
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
     width: 20vw;
@@ -37,4 +37,43 @@ main {
 .main_register {
     display: flex;
     justify-content: space-between;
+    padding-top: 2rem;
+}
+#koko_canva {
+    width: 100%;
+}
+#koko_canva_box {
+    width: 40%;
+}
+.form_element_line > div > label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: gray;
+    padding-bottom: 0.5rem;
+}
+.form_element_line > div > select {
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    border: none;
+}
+.form_element_line {
+    padding-bottom: 1rem;
+}
+.form_button {
+    display: flex;
+    justify-content: space-around;
+}
+.form_button > button {
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 50rem;
+    border: 1px solid #6366f1;
+    color: #6366f1;
+    background-color: white;
+}
+
+.form_button > button:hover {
+    color: white;
+    background-color: #6366f1;
+    transition: 0.5s;
 }
