@@ -14,15 +14,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class ParentController extends AbstractController
 {
     #[Route('/parent', name: 'app_parent')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
         return $this->render('parent/index.html.twig', [
             'controller_name' => 'ParentController',
+            'registration' => $request->get('registration')
         ]);
     }
     #[Route('/parent/enfants/ajout', name: 'ajout_enfant')]
     public function ajout_enfant(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
-    { 
+    {
         $user = new User();
         $form = $this->createForm(AddEnfantType::class, $user);
         $form->handleRequest($request);
@@ -30,7 +31,7 @@ class ParentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
-            $userPasswordHasher->hashPassword(
+                $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
@@ -46,7 +47,7 @@ class ParentController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_parent');
+            return $this->redirectToRoute('app_parent', array("registration" => true));
         }
 
         return $this->render('parent/ajoutEnfant.html.twig', [

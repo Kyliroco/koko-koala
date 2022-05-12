@@ -4,9 +4,12 @@
 
 {% block body %}
 <main>
+{% if registration == true %}Votre enfant peux maintenant se connecter
+{% else %}
     <div>
         Bienvenue dans votre Dashboard parent
     </div>
+    {% endif %}
     <div><a href="/parent/enfants/ajout">Ajouter un enfant</a></div>
 </main>
 {% endblock %}
