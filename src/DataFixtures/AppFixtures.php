@@ -41,25 +41,9 @@ class AppFixtures extends Fixture
         $exo2 = new Exercice("FrançaisEx1", $this->getReference(1), $this->getReference(4), 0, "app_enfant", null);
         $exo3 = new Exercice("FrançaisEx2", $this->getReference(1), $this->getReference(3), 1, "app_enfant", null);
         $exo4 = new Exercice("Remplir une suite", $this->getReference(2), $this->getReference(3), 1, "RemplirSuite", $this->getReference(5));
-        $niveau = new Niveau(1, 0, 10, "jusqu'a 10", $exo4);
-        $niveau1 = new Niveau(2, 0, 50, "jusqu'a 20", $exo4);
-        $niveau2 = new Niveau(3, 0, 100, "jusqu'a 100", $exo4);
-        $exo4->addNiveau($niveau);
-        $exo4->addNiveau($niveau1);
-        $exo4->addNiveau($niveau2);
-        $manager->persist($niveau);
-        $manager->persist($niveau1);
-        $manager->persist($niveau2);
+
         $exo5 = new Exercice("Décomposer", $this->getReference(2), $this->getReference(3), 1, "Decomposer", $this->getReference(5));
-        $niveau = new Niveau(1, 0, 100, "jusqu'a 100", $exo5);
-        $niveau1 = new Niveau(2, 0, 1000, "jusqu'a 1000", $exo5);
-        $niveau2 = new Niveau(3, 0, 100000, "jusqu'a 100000", $exo5);
-        $exo5->addNiveau($niveau);
-        $exo5->addNiveau($niveau1);
-        $exo5->addNiveau($niveau2);
-        $manager->persist($niveau);
-        $manager->persist($niveau1);
-        $manager->persist($niveau2);
+
         $this->addReference(7, $exo4);
         $exo5 = new Exercice("Décomposer", $this->getReference(2), $this->getReference(3), 1, "Decomposer", $this->getReference(5));
         $this->addReference(8, $exo5);
@@ -67,6 +51,7 @@ class AppFixtures extends Fixture
         $this->addReference(9, $exo6);
         $exo7 = new Exercice("Remplir une suite à l'envers", $this->getReference(2), $this->getReference(3), 1, "RemplirSuite", $this->getReference(5));
         $this->addReference(10, $exo7);
+
         $manager->persist($exo);
         $manager->persist($exo2);
         $manager->persist($exo3);
