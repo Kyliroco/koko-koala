@@ -1,5 +1,4 @@
 <template>
-  <HeaderExercice :exercice="props.exercice" :exoParam="exoParam" :niveau="props.niveau"/>
   <div class="example-wrapper">
 	<h2 style="text-align: center; padding:1rem">Compte le nombre de Koko.</h2>
     <div style="display: flex; justify-content: space-evenly; height: 256px;">
@@ -27,40 +26,31 @@
 </template>
 
 <script setup>
-    import HeaderExercice from "../HeaderExercice.vue";
     import { useKokoStore } from "../../stores/index";
-    import { useRoute, useRouter } from "vue-router";
-    import { ref, computed } from "@vue/reactivity";
-    import { onMounted } from "@vue/runtime-core";
     const store = useKokoStore();
-    const route = useRoute();
-    const router = useRouter();
-    const niveau = ref();
     const props = defineProps({
         exercice: Object,
-        niveau: Number
+        exoParam: Object,
+        niveau: Object
     });
-    var exoParam = ref({
+
+    const emit = defineEmits(["defineExoParam", "mainExercice", "suivantExercice", "checkButton", "checkExercice"]);
+
+    emit("defineExoParam", {
         nbQuestions: 10,
         questionEnCours: 1,
         points: 10,
-        pointsParQuestions: 1
+        pointsParQuestions: 1,
+        fin: false
     });
-    for (let index = 0; index < props.exercice.niveaux.length; index++) {
-        if (props.exercice.niveaux[index].numero == props.niveau) {
-        niveau.value = props.exercice.niveaux[index];
-        }
-    }
-    var limiteChiffresMin = niveau.value.min
-    var limiteChiffresMax = niveau.value.max
+    var limiteChiffresMin = props.niveau.min
+    var limiteChiffresMax = props.niveau.max
+
 
     let image = new Image();
     image.src = '/img/koko.png';
     let imageLoaded = false;
     image.addEventListener('load', function(){imageLoaded = true});
-
-
-    var fin = false
 
     var nbImagesParLignes = Math.ceil(Math.sqrt(limiteChiffresMax))
     var nbImages = 0
@@ -73,16 +63,7 @@
 
             dessinerBilles(ctx, canvas, image, nbImages)
 
-            document.getElementById('checkButton').addEventListener('click', check)
-            document.getElementById('checkButton').style.display = "inline-block"
-            document.getElementById('canvas').addEventListener("click", check)
-            document.getElementById('nextButton').addEventListener("click", suivant)
-            document.getElementById('startButton').style.display = "none"
-
-            document.getElementById("points").textContent = exoParam.value.points;
-            document.getElementById("nbQuestions").textContent = exoParam.value.nbQuestions;
-            document.getElementById("questionEnCours").textContent = exoParam.value.questionEnCours;
-            document.querySelector('progress').value = (exoParam.value.questionEnCours-1)*100/exoParam.value.nbQuestions;
+            emit("mainExercice", suivant, check);
         }
     }
 
@@ -103,38 +84,24 @@
     }
 
     function check(){
-        document.getElementById('checkButton').removeEventListener('click', check)
-        document.getElementById('checkButton').style.display = "none"
+        emit("checkButton", check);
+        let nouveauPoints = props.exoParam.points;
         if(nbImages == document.getElementById('reponse').value){
             document.getElementById('reponse').classList.add('true_1')
         }else{
             document.getElementById('reponse').classList.add('false_1')
             document.getElementById('reponse').value = nbImages
-            exoParam.value.points -= exoParam.value.pointsParQuestions
-            document.getElementById('count_icon').style.filter = "hue-rotate(-"+((exoParam.value.pointsParQuestions*exoParam.value.nbQuestions-exoParam.value.points)*60/(exoParam.value.pointsParQuestions*exoParam.value.nbQuestions))+"deg)"
+            nouveauPoints -= props.exoParam.pointsParQuestions
         }
-        document.getElementById('canvas').removeEventListener("click", check)
-        
-        document.getElementById("points").textContent = exoParam.value.points;
-        document.querySelector('progress').value = (exoParam.value.questionEnCours-1)*100/exoParam.value.nbQuestions;
-        if(!fin){
-            document.getElementById('nextButton').style.display = "inline-block"
-        }else{
-            document.querySelector('progress').value = (exoParam.value.questionEnCours+1)*100/exoParam.value.nbQuestions;
-        }
+        emit("checkExercice", nouveauPoints);
     }
 
     function suivant(){
-        exoParam.value.questionEnCours += 1
-        document.getElementById('nextButton').removeEventListener('click', suivant)
-        document.getElementById('nextButton').style.display = "none"
+        emit("suivantExercice", suivant);
         document.getElementById('canvas').style.filter = ""
         document.getElementById('reponse').classList.remove('false_1')
         document.getElementById('reponse').classList.remove('true_1')
         document.getElementById('reponse').value = ""
-        if(exoParam.value.questionEnCours == 10){
-            fin = true
-        }
         main()
     }
 </script>

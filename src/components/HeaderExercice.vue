@@ -60,7 +60,7 @@ const store = useKokoStore();
 const props = defineProps({
   exercice: Object,
   exoParam: Object,
-  niveau: Number
+  niveau: String
 });
 </script>
 <style></style>
