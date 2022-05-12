@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&family=Whisper&display=swap');
+
+.title {
+    padding-top: 3.5rem;
+    font-family: "League Spartan";
+    font-size: 2.5rem;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+}
+main {
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+.form_element > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_element > div > label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: gray;
+    padding-bottom: 0.5rem;
+}
+.form_element > div > input {
+    border: none;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid grey;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    width: 20vw;
+}
+.main_register {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+}
+#koko_canva {
+    width: 100%;
+}
+#koko_canva_box {
+    width: 40%;
+}
+.form_element_line > div > label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: gray;
+    padding-bottom: 0.5rem;
+}
+.form_element_line > div > select {
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    border: none;
+}
+.form_element_line {
+    padding-bottom: 1rem;
+}
+.form_button {
+    display: flex;
+    justify-content: space-around;
+}
+.form_button > button {
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 50rem;
+    border: 1px solid #6366f1;
+    color: #6366f1;
+    background-color: white;
+}
+
+.form_button > button:hover {
+    color: white;
+    background-color: #6366f1;
+    transition: 0.5s;
+}

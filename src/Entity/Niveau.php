@@ -60,17 +60,13 @@ class Niveau
 
 
 
-    public function __construct($numero, $min, $max, $nom, $exercice)
+    public function __construct($numero = null, $exercice = null, $min = null, $max = null, $nom = null)
     {
         $this->numero = $numero;
+        $this->exercice = $exercice;
         $this->min = $min;
         $this->max = $max;
         $this->nom = $nom;
-        $this->exercice = $exercice;
-    }
-    public function __toString(): string
-    {
-        return $this->nom;
     }
 
     public function getNumero(): ?int
