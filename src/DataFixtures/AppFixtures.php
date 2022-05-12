@@ -46,12 +46,15 @@ class AppFixtures extends Fixture
         $this->addReference(8, $exo5);
         $exo6 = new Exercice("Compter", $this->getReference(2), $this->getReference(3), 1, "Compter", $this->getReference(5));
         $this->addReference(9, $exo6);
+        $exo7 = new Exercice("Remplir une suite à l'envers", $this->getReference(2), $this->getReference(3), 1, "RemplirSuite", $this->getReference(5));
+        $this->addReference(10, $exo7);
         $manager->persist($exo);
         $manager->persist($exo2);
         $manager->persist($exo3);
         $manager->persist($exo4);
         $manager->persist($exo5);
         $manager->persist($exo6);
+        $manager->persist($exo7);
         $manager->flush();
 
         $niveau = new Niveau(1, $this->getReference(6), 1, 10, "Niveau 1");
@@ -62,6 +65,8 @@ class AppFixtures extends Fixture
         $niveau6 = new Niveau(2, $this->getReference(8), 1000, 9999, "Niveau 2");
         $niveau7 = new Niveau(1, $this->getReference(9), 1, 10, "Niveau 1");
         $niveau8 = new Niveau(2, $this->getReference(9), 1, 50, "Niveau 2");
+        $niveau9 = new Niveau(1, $this->getReference(10), 10, 1, "Niveau 1");
+        $niveau10 = new Niveau(2, $this->getReference(10), 100, 1, "Niveau 2");
         $manager->persist($niveau);
         $manager->persist($niveau2);
         $manager->persist($niveau3);
@@ -70,6 +75,8 @@ class AppFixtures extends Fixture
         $manager->persist($niveau6);
         $manager->persist($niveau7);
         $manager->persist($niveau8);
+        $manager->persist($niveau9);
+        $manager->persist($niveau10);
         $manager->flush();
 
         //Mot de passe: testtest
