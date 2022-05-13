@@ -34,10 +34,14 @@ main {
     padding-top: 0.5rem;
     width: 20vw;
 }
+.form_element > div > ul > li {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color: #B0413E;
+}
 .main_register {
     display: flex;
     justify-content: space-between;
-    padding-top: 2rem;
 }
 #koko_canva {
     width: 100%;
@@ -50,6 +54,7 @@ main {
     font-size: 0.8rem;
     color: gray;
     padding-bottom: 0.5rem;
+    padding-right: 0.5rem;
 }
 .form_element_line > div > select {
     font-family: 'Montserrat', sans-serif;
@@ -76,4 +81,11 @@ main {
     color: white;
     background-color: #6366f1;
     transition: 0.5s;
+}
+.left {
+    display: flex;
+    justify-content: left;
+}
+form {
+    padding-top: 2rem;
 }

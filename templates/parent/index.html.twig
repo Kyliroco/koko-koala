@@ -2,14 +2,24 @@
 
 {% block title %}Hello ParentController!{% endblock %}
 
+{% block stylesheets %}
+        {{ parent() }}
+        <link href="./css/default/dashboard.css" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
 <main>
-{% if registration == true %}Votre enfant peux maintenant se connecter
-{% else %}
+    {% if registration == true %}<p class="message">Votre enfant peut maintenant se connecter</p>{% endif %}
     <div>
-        Bienvenue dans votre Dashboard parent
+        <h1 class="title">Bienvenue dans tableau de bord !</h1>
     </div>
-    {% endif %}
-    <div><a href="/parent/enfants/ajout">Ajouter un enfant</a></div>
+
+    <div>
+        <h2>Actions</h2>
+        <ul>
+            <li class="action_button"><a href="/parent/enfants/ajout">+ Ajouter un enfant</a></li>
+        </ul>
+    </div>
+
 </main>
 {% endblock %}
