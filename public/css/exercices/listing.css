@@ -12,5 +12,17 @@ main {
 .exercice > a {
     text-decoration: none;
     color: black;
-    
+    font-family: 'Montserrat', sans-serif;
+}
+.exercice > a:hover {
+    color: #7F84DF;
+}
+h2 {
+    font-family: "League Spartan";
+    font-size: 1.4rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.exercice {
+    padding-top: 0.5rem;
 }
