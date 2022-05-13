@@ -139,7 +139,7 @@
 </script>
 <style>
     #bloc_addition{
-        width: 50%;
+        width: max-content%;
         margin: auto;
     }
     #bloc_addition ul{

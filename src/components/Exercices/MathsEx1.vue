@@ -1,6 +1,6 @@
 <template>
   <div class="example-wrapper">
-	<h2 style="text-align: center; padding:1rem">Appuie sur la case où il y a le plus de Koko.</h2>
+	<h2 class="consigne">Appuie sur la case où il y a le plus de Koko.</h2>
     <div style="display: flex; justify-content: space-evenly; height: 256px;">
         <canvas style="border-radius: 15px; border: 1px black solid; background-color: white" id="canvas1" width="256" height="256"></canvas>
         <canvas style="border-radius: 15px; border: 1px black solid; background-color: white" id="canvas2" width="256" height="256"></canvas>

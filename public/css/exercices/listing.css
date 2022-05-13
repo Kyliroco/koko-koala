@@ -1,0 +1,16 @@
+main {
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+.title {
+    padding-top: 3.5rem;
+    font-family: "League Spartan";
+    font-size: 2.5rem;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+}
+.exercice > a {
+    text-decoration: none;
+    color: black;
+    
+}
