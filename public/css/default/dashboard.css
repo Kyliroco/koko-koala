@@ -19,6 +19,7 @@ main {
     color: #6366f1;
     background-color: white;
     text-decoration: none;
+    width: max-content;
 }
 .action_button:hover > a {
     color: white;
